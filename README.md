@@ -7,3 +7,5 @@
 - Rampino
 - Armi
 - Ambiente e nemici
+- Suoni
+- Livelli
