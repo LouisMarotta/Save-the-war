@@ -5,6 +5,8 @@ Add description here 😏
 - Interfaccia
 - Tutorial
 - Personaggio (movimento, vita, ecc...)
+  - Russo 
+  - Vodka = punti vita
 - Rampino
 - Armi
 - Ambiente e nemici
