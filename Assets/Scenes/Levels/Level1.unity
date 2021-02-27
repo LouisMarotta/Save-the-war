@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 429079028}
   - component: {fileID: 429079030}
   - component: {fileID: 429079029}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -368,7 +368,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 915852875}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 5.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1753669595}
@@ -431,7 +431,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 981391969}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 53.195, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1663355680}
@@ -452,7 +452,7 @@ MonoBehaviour:
   grapplingGun: {fileID: 1753669596}
   m_lineRenderer: {fileID: 981391972}
   percision: 40
-  straightenLineSpeed: 5
+  straightenLineSpeed: 19.42
   ropeAnimationCurve:
     serializedVersion: 2
     m_Curve:
@@ -467,7 +467,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 0.10715822
-      value: 0.36740547
+      value: 1
       inSlope: 1.6788657
       outSlope: 1.6788657
       tangentMode: 0
@@ -475,26 +475,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.30177993
-      value: 0.13127482
-      inSlope: 1.5297735
-      outSlope: 1.5297735
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.31978184
-      value: 0.56829643
-      inSlope: 1.6828135
-      outSlope: 1.6828135
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
       time: 0.6349177
-      value: 0.36492214
+      value: 0
       inSlope: 1.1758085
       outSlope: 1.1758085
       tangentMode: 0
@@ -503,7 +485,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 1
+      value: 1.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -513,7 +495,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  StartWaveSize: 2
+  StartWaveSize: 0.18
   ropeProgressionCurve:
     serializedVersion: 2
     m_Curve:
@@ -538,7 +520,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ropeProgressionSpeed: 1
+  ropeProgressionSpeed: 45.9
   isGrappling: 1
 --- !u!120 &981391972
 LineRenderer:
@@ -584,7 +566,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.25
+    widthMultiplier: 0.1
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -635,7 +617,7 @@ LineRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_UseWorldSpace: 1
+  m_UseWorldSpace: 0
   m_Loop: 0
 --- !u!1 &998697017
 GameObject:
@@ -693,7 +675,7 @@ GameObject:
   - component: {fileID: 1266443665}
   - component: {fileID: 1266443664}
   - component: {fileID: 1266443663}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -862,7 +844,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308755977}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalPosition: {x: -0.02, y: -2.14, z: 0}
   m_LocalScale: {x: 0.17045282, y: 0.17045282, z: 0.17045282}
   m_Children:
   - {fileID: 950461790}
@@ -945,7 +927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9a08451282634c469670103709d0190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 400
+  m_JumpForce: 300
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
   m_AirControl: 1
@@ -976,9 +958,9 @@ SpringJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0.029685229, y: 2.5529177}
   m_AutoConfigureDistance: 1
-  m_Distance: 2
+  m_Distance: 4.6931806
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &1308755985
@@ -1020,7 +1002,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663355679}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -47.8, y: 2.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 981391970}
@@ -1038,7 +1020,7 @@ GameObject:
   - component: {fileID: 1668868691}
   - component: {fileID: 1668868690}
   - component: {fileID: 1668868692}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rectangle_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1147,7 +1129,7 @@ GameObject:
   - component: {fileID: 1692728885}
   - component: {fileID: 1692728886}
   - component: {fileID: 1692728887}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1285,8 +1267,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grappleRope: {fileID: 981391971}
-  grappleToAll: 1
-  grappableLayerNumber: 2
+  grappleToAll: 0
+  grappableLayerNumber: 8
   m_camera: {fileID: 510063833}
   gunHolder: {fileID: 1308755979}
   gunPivot: {fileID: 915852876}
@@ -1296,9 +1278,9 @@ MonoBehaviour:
   rotateOverTime: 1
   rotationSpeed: 4
   hasMaxDistance: 1
-  maxDistnace: 5
+  maxDistnace: 10
   launchToPoint: 1
-  launchType: 0
+  launchType: 1
   launchSpeed: 1
   autoConfigureDistance: 0
   targetDistance: 3
@@ -1369,7 +1351,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 4319395737909131107, guid: c9314519eee888b4797643f6bda8b686,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1393,7 +1375,7 @@ GameObject:
   - component: {fileID: 1769736784}
   - component: {fileID: 1769736786}
   - component: {fileID: 1769736785}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
