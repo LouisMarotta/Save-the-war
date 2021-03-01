@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 
     public HealthBar healthBar;
 
+    public BoxCollider2D player;
+
     void Start()
     {
         //Intitialize currenthealth with max health value
@@ -42,4 +44,9 @@ public class Player : MonoBehaviour
     {
         return currentHealth == 0;
     }
+
+    /*void OnCollisionEnter(UnityEngine.Collision other)
+    {
+        Debug.Log(other.gameObject.name);
+    }*/
 }
