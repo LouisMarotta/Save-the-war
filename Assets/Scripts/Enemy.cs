@@ -13,9 +13,7 @@ public class Enemy : MonoBehaviour
 
 
     [SerializeField]
-    GameObject bulletPrefab;
-    [SerializeField]
-    Transform weaponTip;
+    GameObject bullet;
 
 
     public float fireRate = 5f;
@@ -24,25 +22,33 @@ public class Enemy : MonoBehaviour
     public LayerMask whatToHit;     // l'oggetto che il raycast deve colpire 
 
     float timeFire = 0;
-    Transform firePoint;
 
     Vector2 PlayerPosition;
+    Vector2 GunPoint;
 
-    public Vector2 direction;
-
-
+    bool colpito = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        colpito = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerPosition = GameObject.Find("Player").transform.position;
-        ShootRay(GameObject.Find("GunPoint").transform.position, PlayerPosition);
+        colpito = false;
+
+
+        // Mettere questo forse nel void Start?!!?!?!?? -----------------------
+        PlayerPosition = GameObject.Find("Player").transform.position;  // Prendo la posizione del Player 
+        GunPoint = GameObject.Find("GunPoint").transform.position;  // Prendo la posizione da dove la pallottola dovra' uscire
+
+        colpito = ShootRay(GunPoint, PlayerPosition);  // se il ray trova e colpisce il player allora true
+
+        if (colpito)
+            OnShoot();
+            
     }
 
     public void OnShoot()
@@ -61,28 +67,32 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void ShootRay(Vector2 origin, Vector2 direction)
+    bool ShootRay(Vector2 origin, Vector2 destination)
     {
-        RaycastHit2D hit = Physics2D.Raycast(origin, direction - origin, range, whatToHit);
+        colpito = false;
 
-        Debug.DrawRay(origin, direction - origin, Color.blue, 1f);
-        Debug.Log(direction);
+        RaycastHit2D hit = Physics2D.Raycast(origin, destination - origin, range, whatToHit);     // attenzione a fare sempre direction - origin per calcolare la direzione
+
+        if (hit.collider != null)
+        {
+            colpito = true;
+        }
+
+        Debug.DrawRay(origin, destination - origin, Color.blue, 0.1f);
+        Debug.DrawLine(origin, new Vector2(origin.x + range, origin.y), Color.red, 0.1f);  // range del colider
+
+        return colpito;
     }
 
 
 
     void Shoot()
     {
-        Vector2 firePos = new Vector2(weaponTip.position.x, weaponTip.position.y);
-
-        //Vector2 dir = (c_movement.m_FacingRight) ? Vector2.right : Vector2.left;
-
-        //Debug.DrawRay(firePos, dir * range, Color.blue, 1f);
+        var bulletObject =Instantiate(bullet, GunPoint, Quaternion.identity);
+        Debug.Log("bullet istanziato");
+        Debug.Log(PlayerPosition);
+        Debug.Log(GunPoint);
+        bulletObject.GetComponent<BulletPhysics>().Setup((PlayerPosition - GunPoint));
+        
     }
-
-    void WakeUp()
-    {
-
-    }
-
 }

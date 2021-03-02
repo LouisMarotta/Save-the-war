@@ -612,14 +612,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35ec74d36e79be47ba8e3bafc1e6dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
-  weaponTip: {fileID: 0}
+  bullet: {fileID: 8639031003596390804, guid: eb182910132fad04cb5c30b1c0d2e242, type: 3}
   fireRate: 5
-  range: 4
+  range: 10
   whatToHit:
     serializedVersion: 2
     m_Bits: 512
-  direction: {x: 0, y: 0}
 --- !u!50 &953750230
 Rigidbody2D:
   serializedVersion: 4
@@ -924,7 +922,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026756363}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.15, y: 2.35, z: 0}
+  m_LocalPosition: {x: 5.02, y: 2.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 752574803}
