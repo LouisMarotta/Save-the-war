@@ -30,6 +30,9 @@ public class RopeSystem : MonoBehaviour
     private float ropeMaxCastDistance = 20f;
     private List<Vector2> ropePositions = new List<Vector2>();
 
+    //Track positions that the rope should be wrapping around
+    private Dictionary<Vector2, int> wrapPointsLookup = new Dictionary<Vector2, int>();
+
     //Script Distance
     private bool distanceSet;
 
@@ -74,6 +77,38 @@ public class RopeSystem : MonoBehaviour
         {
             //Hide crosshair when grappling hook is connected
             crosshairSprite.enabled = false;
+
+            if (ropePositions.Count > 0)
+            {
+                // 2
+                var lastRopePoint = ropePositions.Last();
+                var playerToCurrentNextHit = Physics2D.Raycast(playerPosition, (lastRopePoint - playerPosition).normalized, Vector2.Distance(playerPosition, lastRopePoint) - 0.1f, ropeLayerMask);
+
+                // If the raycast hits something
+                if (playerToCurrentNextHit)
+                {
+                    // Cast to a PolygonCollider2D.
+                    var colliderWithVertices = playerToCurrentNextHit.collider as PolygonCollider2D;
+                    if (colliderWithVertices != null)
+                    {
+                        var closestPointToHit = GetClosestColliderPointFromRaycastHit(playerToCurrentNextHit, colliderWithVertices);
+
+                        // Check if it hasn't been wrapped again
+                        if (wrapPointsLookup.ContainsKey(closestPointToHit))
+                        {
+                            ResetRope();
+                            return;
+                        }
+
+                        // Wrap around and update dictionary
+                        ropePositions.Add(closestPointToHit);
+                        wrapPointsLookup.Add(closestPointToHit, 0);
+                        distanceSet = false;
+                    }
+                }
+            }
+
+
         }
         HandleInput(aimDirection);
         UpdateRopePositions();
@@ -114,7 +149,7 @@ public class RopeSystem : MonoBehaviour
                 if (!ropePositions.Contains(hit.point))
                 {
                     // Jump slightly to distance the player a little from the ground after grappling to something (pathfinder mains rise up 💪😎).
-                    transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 10f), ForceMode2D.Impulse);
+                    transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 15f), ForceMode2D.Impulse);
                     ropePositions.Add(hit.point);
                     ropeJoint.distance = Vector2.Distance(playerPosition, hit.point);
                     ropeJoint.enabled = true;
@@ -147,6 +182,7 @@ public class RopeSystem : MonoBehaviour
         ropeRenderer.SetPosition(1, transform.position);
         ropePositions.Clear();
         ropeHingeAnchorSprite.enabled = false;
+        wrapPointsLookup.Clear();
     }
 
     private void UpdateRopePositions()
@@ -160,14 +196,17 @@ public class RopeSystem : MonoBehaviour
         //Make ropePositions.Count number of vertices
         ropeRenderer.positionCount = ropePositions.Count + 1;
 
-        // 3
+        //For every position set the line renderer vertex position to the Vector2 position 
         for (var i = ropeRenderer.positionCount - 1; i >= 0; i--)
         {
-            if (i != ropeRenderer.positionCount - 1) // if not the Last point of line renderer
+            if (i != ropeRenderer.positionCount - 1) // if not the Last point of line renderer (We can probably integrate this into the "for" above)
             {
                 ropeRenderer.SetPosition(i, ropePositions[i]);
 
-                // 4
+                /*
+                    Set the rope anchor to the second-to-last rope position where the current hinge/anchor should be
+                    if there is only one rope position, then set that one to be the anchor point.               
+                */
                 if (i == ropePositions.Count - 1 || ropePositions.Count == 1)
                 {
                     var ropePosition = ropePositions[ropePositions.Count - 1];
@@ -190,7 +229,7 @@ public class RopeSystem : MonoBehaviour
                         }
                     }
                 }
-                // 5
+                // Handles point where the point at which the rope connects to an object, a.k.a. the current hinge/anchor point.
                 else if (i - 1 == ropePositions.IndexOf(ropePositions.Last()))
                 {
                     var ropePosition = ropePositions.Last();
@@ -204,10 +243,25 @@ public class RopeSystem : MonoBehaviour
             }
             else
             {
-                // 6
+                // Handles setting the rope's last vertex position to the player's current position.
                 ropeRenderer.SetPosition(i, transform.position);
             }
         }
+    }
+
+    //This method takes in two parameters, a RaycastHit2D object, and a PolygonCollider2D (Maybe we need to change this). 
+    private Vector2 GetClosestColliderPointFromRaycastHit(RaycastHit2D hit, PolygonCollider2D polyCollider)
+    {
+        // First convert the poligon collider points into a dictionary (Value of each dictionary = position)
+        // The key of each entry, is set to the distance that this point is to the player's position (float value). 
+        var distanceDictionary = polyCollider.points.ToDictionary<Vector2, float, Vector2>(
+            position => Vector2.Distance(hit.point, polyCollider.transform.TransformPoint(position)),
+            position => polyCollider.transform.TransformPoint(position));
+
+        //The distance closest to the player's current position, and the closest one is returned
+        var orderedDictionary = distanceDictionary.OrderBy(e => e.Key);
+        //Return the point on the collider between the player and the current hinge point on the rope!
+        return orderedDictionary.Any() ? orderedDictionary.First().Value : Vector2.zero;
     }
 
 
