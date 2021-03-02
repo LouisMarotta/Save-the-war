@@ -88,11 +88,10 @@ public class Enemy : MonoBehaviour
 
     void Shoot()
     {
-        var bulletObject =Instantiate(bullet, GunPoint, Quaternion.identity);
-        Debug.Log("bullet istanziato");
-        Debug.Log(PlayerPosition);
-        Debug.Log(GunPoint);
+        var bulletObject = Instantiate(bullet, GunPoint, Quaternion.identity);
         bulletObject.GetComponent<BulletPhysics>().Setup((PlayerPosition - GunPoint));
         
     }
+
+    
 }

@@ -14,7 +14,32 @@ public class BulletPhysics : MonoBehaviour
         moveSpeed = 1f;
         rigidbody2D.AddForce(shootDir * moveSpeed, ForceMode2D.Impulse);
 
-        Debug.Log(shootDir);
-        
+        transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(shootDir));
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
+        Debug.Log("Cancellato");
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Collision");
+        if (collision.gameObject.tag == "Player")
+        {
+            
+            Destroy(this.gameObject);
+        } 
+    }
+
+
+    public static float GetAngleFromVectorFloat(Vector2 dir)    // calcola l'angolo data la direzione (serve per ruotare il bullet verso il player)
+    {
+        float n = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        if (n < 0) n += 360;
+
+        return n;
     }
 }
