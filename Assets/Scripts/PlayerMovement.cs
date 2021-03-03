@@ -10,8 +10,13 @@ public class PlayerMovement : MonoBehaviour
 
     float horizontalMove = 0f;
     bool jump = false;
-
     bool crouch = false;
+
+    //Rope Variables
+    public bool isSwinging = false;
+    public Vector2 ropeHook;
+    public float swingForce = 4f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,5 +49,7 @@ public class PlayerMovement : MonoBehaviour
     {
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
         jump = false;
+
+
     }
 }
