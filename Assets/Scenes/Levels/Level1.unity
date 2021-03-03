@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 8639031003596390804, guid: eb182910132fad04cb5c30b1c0d2e242, type: 3}
-  fireRate: 5
+  fireRate: 2
   range: 10
   whatToHit:
     serializedVersion: 2
@@ -1045,7 +1045,7 @@ GameObject:
   - component: {fileID: 1308755985}
   m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
