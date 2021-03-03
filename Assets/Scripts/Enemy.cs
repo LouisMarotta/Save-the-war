@@ -13,7 +13,11 @@ public class Enemy : MonoBehaviour
 
 
     [SerializeField]
+    GameObject player;
+    [SerializeField]
     GameObject bullet;
+    [SerializeField]
+    GameObject gunPoint;
 
 
     public float fireRate = 5f;
@@ -41,8 +45,8 @@ public class Enemy : MonoBehaviour
 
 
         // Mettere questo forse nel void Start?!!?!?!?? -----------------------
-        PlayerPosition = GameObject.Find("Player").transform.position;  // Prendo la posizione del Player 
-        GunPoint = GameObject.Find("GunPoint").transform.position;  // Prendo la posizione da dove la pallottola dovra' uscire
+        PlayerPosition = player.transform.position;  // Prendo la posizione del Player 
+        GunPoint = gunPoint.transform.position;  // Prendo la posizione da dove la pallottola dovra' uscire
 
         colpito = ShootRay(GunPoint, PlayerPosition);  // se il ray trova e colpisce il player allora true
 
@@ -90,8 +94,19 @@ public class Enemy : MonoBehaviour
     {
         var bulletObject = Instantiate(bullet, GunPoint, Quaternion.identity);
         bulletObject.GetComponent<BulletPhysics>().Setup((PlayerPosition - GunPoint));
-        
     }
 
-    
+    void RotateGun()
+    {
+
+    }
+
+    public static float GetAngleFromVectorFloat(Vector2 dir)    // calcola l'angolo data la direzione (serve per ruotare il bullet verso il player)
+    {
+        float n = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        if (n < 0) n += 360;
+
+        return n;
+    }
+
 }
