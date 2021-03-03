@@ -9,4 +9,14 @@ public class Bullet : MonoBehaviour
         gameObject.SetActive(false);
         //Debug.Log("Cancellato");
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            gameObject.SetActive(false);
+            var myscript = collision.gameObject.GetComponent<Player>();
+            myscript.TakeDamage(1);
+        }
+    }
 }
