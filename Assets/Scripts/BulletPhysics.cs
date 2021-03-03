@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BulletPhysics : MonoBehaviour
 {
     [SerializeField]
@@ -15,18 +16,6 @@ public class BulletPhysics : MonoBehaviour
 
         transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(shootDir));
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("Collision");
-        if (collision.gameObject.tag == "Player")
-        {
-            
-            //Destroy(this.gameObject);
-            gameObject.SetActive(false);
-        } 
-    }
-
 
     public static float GetAngleFromVectorFloat(Vector2 dir)    // calcola l'angolo data la direzione (serve per ruotare il bullet verso il player)
     {

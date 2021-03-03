@@ -19,7 +19,6 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     GameObject gunPoint;
 
-
     public float fireRate = 5f;
     public float range = 60f; // weapon range
 
@@ -29,24 +28,25 @@ public class Enemy : MonoBehaviour
 
     Vector2 PlayerPosition;
     Vector2 GunPoint;
+    Vector2 Direction;  // direzione in cui sparare, PlayerPosition - GunPoint
+
+    Transform gun;  // La pistola, children di Enemy
 
     bool colpito = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         colpito = false;
+        gun = transform.Find("Gun");    
     }
 
-    // Update is called once per frame
     void Update()
     {
         colpito = false;
 
-
-        // Mettere questo forse nel void Start?!!?!?!?? -----------------------
         PlayerPosition = player.transform.position;  // Prendo la posizione del Player 
         GunPoint = gunPoint.transform.position;  // Prendo la posizione da dove la pallottola dovra' uscire
+        Direction = PlayerPosition - GunPoint;
 
         colpito = ShootRay(GunPoint, PlayerPosition);  // se il ray trova e colpisce il player allora true
 
@@ -92,21 +92,26 @@ public class Enemy : MonoBehaviour
 
     void Shoot()
     {
-        //var bulletObject = Instantiate(bullet, GunPoint, Quaternion.identity);
-        //bulletObject.GetComponent<BulletPhysics>().Setup((PlayerPosition - GunPoint));
+        RotateGun();
+        GenerateBullet();
+    }
 
-        GameObject bullet = ObjectPool.SharedInstance.GetPooledObject(); 
-          if (bullet != null) {
+    void GenerateBullet()
+    {
+        GameObject bullet = ObjectPool.SharedInstance.GetPooledObject();
+        if (bullet != null)
+        { // se c'e' posto nel pool 
             bullet.transform.position = GunPoint;
             bullet.SetActive(true);
-            bullet.GetComponent<BulletPhysics>().Setup((PlayerPosition - GunPoint));
-        }  
+            bullet.GetComponent<BulletPhysics>().Setup((Direction));
+        }
     }
 
     void RotateGun()
     {
-
+        gun.transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(Direction));
     }
+
 
     public static float GetAngleFromVectorFloat(Vector2 dir)    // calcola l'angolo data la direzione (serve per ruotare il bullet verso il player)
     {
@@ -115,5 +120,6 @@ public class Enemy : MonoBehaviour
 
         return n;
     }
+
 
 }
