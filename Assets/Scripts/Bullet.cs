@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     void OnBecameInvisible()
     {
-        Destroy(this.gameObject);
-        Debug.Log("Cancellato");
+        gameObject.SetActive(false);
+        //Debug.Log("Cancellato");
     }
 }

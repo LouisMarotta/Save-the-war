@@ -11,7 +11,6 @@ public class BulletPhysics : MonoBehaviour
     public void Setup(Vector2 shootDir)
     {
         Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
-        moveSpeed = 1f;
         rigidbody2D.AddForce(shootDir * moveSpeed, ForceMode2D.Impulse);
 
         transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(shootDir));
@@ -23,7 +22,8 @@ public class BulletPhysics : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            gameObject.SetActive(false);
         } 
     }
 

@@ -92,8 +92,15 @@ public class Enemy : MonoBehaviour
 
     void Shoot()
     {
-        var bulletObject = Instantiate(bullet, GunPoint, Quaternion.identity);
-        bulletObject.GetComponent<BulletPhysics>().Setup((PlayerPosition - GunPoint));
+        //var bulletObject = Instantiate(bullet, GunPoint, Quaternion.identity);
+        //bulletObject.GetComponent<BulletPhysics>().Setup((PlayerPosition - GunPoint));
+
+        GameObject bullet = ObjectPool.SharedInstance.GetPooledObject(); 
+          if (bullet != null) {
+            bullet.transform.position = GunPoint;
+            bullet.SetActive(true);
+            bullet.GetComponent<BulletPhysics>().Setup((PlayerPosition - GunPoint));
+        }  
     }
 
     void RotateGun()
