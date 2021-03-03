@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 6263515070690999165}
   - component: {fileID: 6263515070690999161}
   - component: {fileID: 6263515070690999162}
-  - component: {fileID: 8751102153430005110}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -229,27 +228,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35ec74d36e79be47ba8e3bafc1e6dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 8222391103372841641, guid: 5c4d9c2e59d2a1d408177c9e09d82fe7, type: 3}
   bullet: {fileID: 8639031003596390804, guid: eb182910132fad04cb5c30b1c0d2e242, type: 3}
   gunPoint: {fileID: 6263515070731232932}
   fireRate: 2
-  range: 10
+  range: 60
   whatToHit:
     serializedVersion: 2
-    m_Bits: 512
---- !u!114 &8751102153430005110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6263515070690999166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d94850f505f6e041a73ef6ab96dd71f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2
+    m_Bits: 1
 --- !u!1 &6263515070731232932
 GameObject:
   m_ObjectHideFlags: 0

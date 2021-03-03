@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private Vector2 shootDir;
-    public void Setup(Vector2 shootDir)
+    void OnBecameInvisible()
     {
-        this.shootDir = shootDir;
+        Destroy(this.gameObject);
+        Debug.Log("Cancellato");
     }
-
-    
 }

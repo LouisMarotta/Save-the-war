@@ -17,13 +17,6 @@ public class BulletPhysics : MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(shootDir));
     }
 
-    void OnBecameInvisible()
-    {
-        Destroy(this.gameObject);
-        Debug.Log("Cancellato");
-    }
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collision");
