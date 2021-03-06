@@ -31,13 +31,14 @@ public class Enemy : MonoBehaviour
     Vector2 Direction;  // direzione in cui sparare, PlayerPosition - GunPoint
 
     Transform gun;  // La pistola, children di Enemy
+    public float rotationSpeed = 0.0f;  // gun rotation speed / time?
 
     bool colpito = false;
 
     void Start()
     {
         colpito = false;
-        gun = transform.Find("Gun");    
+        gun = transform.Find("Gun");
     }
 
     void Update()
@@ -51,8 +52,11 @@ public class Enemy : MonoBehaviour
         colpito = ShootRay(GunPoint, PlayerPosition);  // se il ray trova e colpisce il player allora true
 
         if (colpito)
+        {
             OnShoot();
-            
+            RotateGun();
+            FlipGun();
+        }
     }
 
     public void OnShoot()
@@ -92,7 +96,6 @@ public class Enemy : MonoBehaviour
 
     void Shoot()
     {
-        RotateGun();
         GenerateBullet();
     }
 
@@ -109,7 +112,28 @@ public class Enemy : MonoBehaviour
 
     void RotateGun()
     {
-        gun.transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(Direction));
+        Vector3 finalAngle = new Vector3(0, 0, GetAngleFromVectorFloat(Direction));
+        gun.transform.rotation = Quaternion.Slerp(gun.transform.rotation, Quaternion.Euler(finalAngle), rotationSpeed);
+
+        rotationSpeed = rotationSpeed + Time.deltaTime;
+        
+    }
+
+    void FlipGun()  // mindfuck, bisogna studiare bene gli angoli
+    {
+        SpriteRenderer gunSprite = gun.GetComponent<SpriteRenderer>();
+
+        if (gun.transform.rotation.eulerAngles.z >= 90 && gun.transform.rotation.eulerAngles.z <= 180 || gun.transform.rotation.eulerAngles.z <= -90 && gun.transform.rotation.eulerAngles.z >= -180)
+        {
+            gunSprite.flipY = true;
+            Debug.Log("Flippato");
+        }
+
+        if (gun.transform.rotation.eulerAngles.z < 90 && gun.transform.rotation.eulerAngles.z > -90)
+        {
+            gunSprite.flipY = false;
+            Debug.Log("Tornato normale");
+        }
     }
 
 
