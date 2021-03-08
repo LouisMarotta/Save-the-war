@@ -18,5 +18,11 @@ public class Bullet : MonoBehaviour
             var myscript = collision.gameObject.GetComponent<Player>();
             myscript.TakeDamage(1);
         }
+
+        if (collision.gameObject.tag == "Object")
+        {
+            gameObject.SetActive(false);
+            Debug.Log("Collisione oggetto");
+        }
     }
 }

@@ -12,7 +12,9 @@ public class BulletPhysics : MonoBehaviour
     public void Setup(Vector2 shootDir)
     {
         Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
-        rigidbody2D.AddForce(shootDir * moveSpeed, ForceMode2D.Impulse);
+        //rigidbody2D.AddForce(shootDir * moveSpeed, ForceMode2D.Impulse);
+
+        rigidbody2D.velocity = shootDir.normalized * moveSpeed;
 
         transform.eulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(shootDir));
     }
