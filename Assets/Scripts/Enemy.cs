@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
         {
             if (Time.time > timeFire)
             {
-                timeFire = Time.time + 1 / fireRate;
+                timeFire = Time.deltaTime + 1 / fireRate;
                 Shoot();
             }
         }
