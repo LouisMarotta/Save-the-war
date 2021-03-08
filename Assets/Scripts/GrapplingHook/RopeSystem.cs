@@ -12,6 +12,7 @@ public class RopeSystem : MonoBehaviour
     [Header("Crosshair:")]
     public Transform crosshair;
     public SpriteRenderer crosshairSprite;
+    public float distanceFromPlayer = 2f;
 
     [Header("Player:")]
     public PlayerMovement playerMovement;
@@ -122,8 +123,8 @@ public class RopeSystem : MonoBehaviour
         }
 
         //2f = crosshair distance from player
-        var x = transform.position.x + 2f * Mathf.Cos(aimAngle);
-        var y = transform.position.y + 2f * Mathf.Sin(aimAngle);
+        var x = transform.position.x + distanceFromPlayer * Mathf.Cos(aimAngle);
+        var y = transform.position.y + distanceFromPlayer * Mathf.Sin(aimAngle);
 
         var crossHairPosition = new Vector3(x, y, 0);
         crosshair.transform.position = crossHairPosition;
@@ -132,7 +133,7 @@ public class RopeSystem : MonoBehaviour
     // Get input from Mouse Buttons
     private void HandleInput(Vector2 aimDirection)
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(1))
         {
             //Enable rope renderer 
             if (ropeAttached) return;
@@ -149,7 +150,7 @@ public class RopeSystem : MonoBehaviour
                 if (!ropePositions.Contains(hit.point))
                 {
                     // Jump slightly to distance the player a little from the ground after grappling to something (pathfinder mains rise up 💪😎).
-                    transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 15f), ForceMode2D.Impulse);
+                    transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 3f), ForceMode2D.Impulse);
                     ropePositions.Add(hit.point);
                     ropeJoint.distance = Vector2.Distance(playerPosition, hit.point);
                     ropeJoint.enabled = true;
@@ -164,11 +165,11 @@ public class RopeSystem : MonoBehaviour
                 ropeJoint.enabled = false;
             }
         }
-
-        if (Input.GetMouseButton(1))
+        else
         {
             ResetRope();
         }
+
     }
 
     // Disable rope with right click
@@ -264,10 +265,6 @@ public class RopeSystem : MonoBehaviour
         return orderedDictionary.Any() ? orderedDictionary.First().Value : Vector2.zero;
     }
 
-
-    void Start()
-    {
-    }
 
 
 }
