@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(origin, destination - origin, range, whatToHit);     // attenzione a fare sempre direction - origin per calcolare la direzione
 
-        if (hit.collider != null)
+        if (hit.collider != null && hit.transform.gameObject.tag == "Player")
         {
             colpito = true;
         }
