@@ -119,20 +119,24 @@ public class Enemy : MonoBehaviour
         
     }
 
-    void FlipGun()  // mindfuck, bisogna studiare bene gli angoli
+    void FlipGun() 
     {
         SpriteRenderer gunSprite = gun.GetComponent<SpriteRenderer>();
 
-        if (gun.transform.rotation.eulerAngles.z >= 90 && gun.transform.rotation.eulerAngles.z <= 180 || gun.transform.rotation.eulerAngles.z <= -90 && gun.transform.rotation.eulerAngles.z >= -180)
+        //Debug.Log(gun.transform.rotation.eulerAngles.z);
+
+        if (gun.transform.rotation.eulerAngles.z >= 90 && gun.transform.rotation.eulerAngles.z <= 270)
         {
             gunSprite.flipY = true;
-            Debug.Log("Flippato");
+            
+            GunPoint.x -= GunPoint.x - gun.transform.position.x;
+            //Debug.Log("Flippato");
         }
 
-        if (gun.transform.rotation.eulerAngles.z < 90 && gun.transform.rotation.eulerAngles.z > -90)
+        if (gun.transform.rotation.eulerAngles.z < 90 || gun.transform.rotation.eulerAngles.z > 270)
         {
             gunSprite.flipY = false;
-            Debug.Log("Tornato normale");
+            //Debug.Log("Tornato normale");
         }
     }
 

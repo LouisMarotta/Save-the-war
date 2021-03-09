@@ -8,6 +8,8 @@ public class ObjectPool : MonoBehaviour
     public GameObject objectToPool;
     public int amountToPool;
 
+    public GameObject whereToPool;
+
 
     void Awake()
     {
@@ -21,6 +23,7 @@ public class ObjectPool : MonoBehaviour
         for(int i = 0; i < amountToPool; i++)
         {
             tmp = Instantiate(objectToPool);
+            tmp.transform.SetParent(whereToPool.transform);
             tmp.SetActive(false);
             pooledObjects.Add(tmp);
         }

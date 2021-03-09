@@ -232,10 +232,10 @@ MonoBehaviour:
   bullet: {fileID: 8639031003596390804, guid: eb182910132fad04cb5c30b1c0d2e242, type: 3}
   gunPoint: {fileID: 6263515070731232932}
   fireRate: 2
-  range: 60
+  range: 5
   whatToHit:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1536
   rotationSpeed: 0
 --- !u!1 &6263515070731232932
 GameObject:
