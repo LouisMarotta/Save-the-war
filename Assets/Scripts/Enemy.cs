@@ -9,9 +9,6 @@ public class Enemy : MonoBehaviour
     // https://www.youtube.com/watch?v=4ivFemmpYus
 
     // https://drive.google.com/drive/folders/0B8Zl1dvvnT64Ry03YnJxV2s3TVE
-
-
-
     [SerializeField]
     GameObject player;
     [SerializeField]
@@ -19,6 +16,11 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     GameObject gunPoint;
 
+    [Header("Health Stats:")]
+    public int maxHealth = 5;
+    [SerializeField]private int health;
+
+    [Header("Gun Stats:")]
     public float fireRate = 5f;
     public float range = 60f; // weapon range
 
@@ -34,6 +36,7 @@ public class Enemy : MonoBehaviour
     public float rotationSpeed = 0.0f;  // gun rotation speed / time?
 
     bool colpito = false;
+
 
     void Start()
     {
@@ -148,6 +151,22 @@ public class Enemy : MonoBehaviour
 
         return n;
     }
+    
+    internal void TakeDamage(int damage)
+    {
+        health -= damage;
 
+        if (health <= 0)
+        {
+            Die();  
+        }
+    }
+
+    public void Die()
+    {
+        //DeathEffect
+        //Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
 
 }
