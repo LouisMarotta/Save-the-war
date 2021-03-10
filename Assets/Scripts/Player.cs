@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,8 +29,12 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        Debug.Log($"Took {damage} damage");
+        //Debug.Log($"Took {damage} damage");
         currentHealth -= damage;
+        if (IsDead())
+        {
+            //Die();
+        }
         healthBar.SetHealth(currentHealth);
     }
 
@@ -40,11 +44,15 @@ public class Player : MonoBehaviour
         healthBar.SetHealth(currentHealth);
     }
 
-    bool isDead()
+    bool IsDead()
     {
-        return currentHealth == 0;
+        return currentHealth <= 0;
     }
 
+    void Die()
+    {
+        Destroy(gameObject);
+    }
     /*void OnCollisionEnter(UnityEngine.Collision other)
     {
         Debug.Log(other.gameObject.name);
