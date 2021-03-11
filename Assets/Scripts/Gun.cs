@@ -16,10 +16,12 @@ public class Gun : MonoBehaviour
     [Header("Bullet:")]
     public GameObject bulletPrefab;
 
+
     [Header("Rotation:")]
     [SerializeField] private bool rotateOverTime = true;
     [Range(0, 60)] [SerializeField] private float rotationSpeed = 4;
 
+    [Header("Weapon Stats:")]
     [SerializeField] private int weaponDamage = 1;
 
     [Header("Effects:")]
@@ -96,12 +98,15 @@ public class Gun : MonoBehaviour
         }
     }
 
+
+    //Rotate the gun
     private void FixedUpdate()
     {
-        //Rotate the gun
+        //Mouse Position
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         difference.Normalize();
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        Debug.Log(transform.rotation = Quaternion.Euler(0f, 0f, rotationZ));
         transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
 
         if (rotationZ < -90 || rotationZ > 90)

@@ -601,14 +601,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8222391102927930746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd7433542e04aa7e4805f4eb28152ec6, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e19f07934e0873b4bd856196236b16e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefabCamera: {fileID: 8335333507791557055, guid: 782472b5c17f485d7b4a044e16e9e293,
     type: 3}
   gunHolder: {fileID: 8222391103372841643}
-  gunPivot: {fileID: 8222391101349827820}
+  gunPivot: {fileID: 8222391102927930747}
   firePoint: {fileID: 2545828754807952447}
+  bulletPrefab: {fileID: 0}
   rotateOverTime: 1
   rotationSpeed: 4
   weaponDamage: 1
@@ -883,6 +884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 8222391103372841647}
   runSpeed: 40
+  isSwinging: 0
   ropeHook: {x: 0, y: 0}
   swingForce: 4
 --- !u!114 &8222391103372841647

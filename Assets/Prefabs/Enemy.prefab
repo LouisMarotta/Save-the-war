@@ -231,11 +231,13 @@ MonoBehaviour:
   player: {fileID: 8222391103372841641, guid: 5c4d9c2e59d2a1d408177c9e09d82fe7, type: 3}
   bullet: {fileID: 8639031003596390804, guid: eb182910132fad04cb5c30b1c0d2e242, type: 3}
   gunPoint: {fileID: 6263515070731232932}
+  maxHealth: 5
+  health: 0
   fireRate: 2
   range: 5
   whatToHit:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 0
   rotationSpeed: 0
 --- !u!1 &6263515070731232932
 GameObject:

@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        health = maxHealth;
         colpito = false;
         gun = transform.Find("Gun");
     }
