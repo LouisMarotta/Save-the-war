@@ -73,11 +73,15 @@ public class RopeSystem : MonoBehaviour
         if (!ropeAttached)
         {
             SetCrosshairPosition(aimAngle);
+            playerMovement.isSwinging = false;
         }
+
         else
         {
             //Hide crosshair when grappling hook is connected
             crosshairSprite.enabled = false;
+            playerMovement.isSwinging = true;
+            playerMovement.ropeHook = ropePositions.Last();
 
             if (ropePositions.Count > 0)
             {
@@ -90,6 +94,7 @@ public class RopeSystem : MonoBehaviour
                 {
                     // Cast to a PolygonCollider2D.
                     var colliderWithVertices = playerToCurrentNextHit.collider as PolygonCollider2D;
+                    //playerMovement.isSwinging = true;
                     if (colliderWithVertices != null)
                     {
                         var closestPointToHit = GetClosestColliderPointFromRaycastHit(playerToCurrentNextHit, colliderWithVertices);
@@ -105,6 +110,7 @@ public class RopeSystem : MonoBehaviour
                         ropePositions.Add(closestPointToHit);
                         wrapPointsLookup.Add(closestPointToHit, 0);
                         distanceSet = false;
+
                     }
                 }
             }
@@ -141,6 +147,9 @@ public class RopeSystem : MonoBehaviour
 
             //Raycast that finds first object in path (hit = object hit) 
             var hit = Physics2D.Raycast(playerPosition, aimDirection, ropeMaxCastDistance, ropeLayerMask);
+
+            //if (hit.)
+            //var hit = Physics2D.Raycast(playerPosition, aimDirection, ropeMaxCastDistance, ropeLayerMask);
 
             // If hit is a valid object
             if (hit.collider != null)
