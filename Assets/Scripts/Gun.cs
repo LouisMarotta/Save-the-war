@@ -30,9 +30,12 @@ public class Gun : MonoBehaviour
 
 
     private Camera m_camera;
+    private SpriteRenderer spriteRenderer;
 
-
-
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -102,6 +105,7 @@ public class Gun : MonoBehaviour
     //Rotate the gun
     private void FixedUpdate()
     {
+        gunPivot.position = gunHolder.position;
         //Mouse Position
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         difference.Normalize();
@@ -109,28 +113,33 @@ public class Gun : MonoBehaviour
         Debug.Log(transform.rotation = Quaternion.Euler(0f, 0f, rotationZ));
         transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
 
-        if (rotationZ < -90 || rotationZ > 90)
+        if (rotationZ > -89 && rotationZ < 89)
         {
+            Debug.Log("Facing right");
+            spriteRenderer.flipY = false;
+
+            //if (gunHolder.transform.eulerAngles.y == 0)
+            //{
 
 
-
-            if (gunHolder.transform.eulerAngles.y == 0)
-            {
+            //    transform.localRotation = Quaternion.Euler(180, 0, -rotationZ);
 
 
-                transform.localRotation = Quaternion.Euler(180, 0, -rotationZ);
+            //}
+            //else if (gunHolder.transform.eulerAngles.y == 180)
+            //{
 
 
-            }
-            else if (gunHolder.transform.eulerAngles.y == 180)
-            {
+            //    transform.localRotation = Quaternion.Euler(180, 180, -rotationZ);
 
 
-                transform.localRotation = Quaternion.Euler(180, 180, -rotationZ);
+            //}
 
-
-            }
-
+        }
+        else
+        {
+            Debug.Log("Facing left");
+            spriteRenderer.flipY = true;
         }
 
     }
