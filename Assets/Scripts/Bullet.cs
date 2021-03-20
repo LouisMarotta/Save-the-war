@@ -12,10 +12,14 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "PlayerHolder")
         {
+            //Debug.Log("Hit player");
             gameObject.SetActive(false);
-            var myscript = collision.gameObject.GetComponent<Player>();
+
+
+            var myscript = collision.gameObject.transform.Find("Player").GetComponent<Player>();
+            //var myscript = collision.gameObject.GetComponent<Player>();
             myscript.TakeDamage(1);
         }
 
