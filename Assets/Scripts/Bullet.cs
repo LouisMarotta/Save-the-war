@@ -18,8 +18,8 @@ public class Bullet : MonoBehaviour
             gameObject.SetActive(false);
 
 
-            var myscript = collision.gameObject.transform.Find("Player").GetComponent<Player>();
-            //var myscript = collision.gameObject.GetComponent<Player>();
+            //var myscript = collision.gameObject.transform.Find("Player").GetComponent<Player>();
+            var myscript = collision.gameObject.GetComponent<Player>();
             myscript.TakeDamage(1);
         }
 
