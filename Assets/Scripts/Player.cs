@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -11,11 +12,17 @@ public class Player : MonoBehaviour
 
     public BoxCollider2D player;
 
+    private GameMaster gm;
+
     void Start()
     {
         //Intitialize currenthealth with max health value
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameMaster>();
+        transform.position = gm.lastCheckPointPos;
+        
     }
 
     void Update()
@@ -51,10 +58,20 @@ public class Player : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //Destroy(gameObject);
     }
     /*void OnCollisionEnter(UnityEngine.Collision other)
     {
         Debug.Log(other.gameObject.name);
     }*/
+
+    void OnTriggerEnter2D(Collider2D target)
+    {
+        if (target.gameObject.tag == "DangerousObject") // se il Player tocca un oggetto con tag "DangerousObject", muore (usato per: tilemap)
+        {
+            Debug.Log("DIEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+            Die();
+        }
+    }
 }
