@@ -244,11 +244,6 @@ PrefabInstance:
       objectReference: {fileID: 2076694628}
     - target: {fileID: 6263515070690999162, guid: df84dd39fab63f34fb59254d7f11a9b1,
         type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 2076694628}
-    - target: {fileID: 6263515070690999162, guid: df84dd39fab63f34fb59254d7f11a9b1,
-        type: 3}
       propertyPath: whatToHit.m_Bits
       value: 1536
       objectReference: {fileID: 0}
@@ -1555,12 +1550,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769736783}
   m_CullTransparentMesh: 0
---- !u!1 &2076694628 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7503984063176428148, guid: 92ef3b9eab36f015b8d993a00d85e4cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 2092638808}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1947285089
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,6 +1580,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2076694628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7503984063176428148, guid: 92ef3b9eab36f015b8d993a00d85e4cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 2092638808}
+  m_PrefabAsset: {fileID: 0}
 --- !u!61 &2076694635 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 7503984063176428145, guid: 92ef3b9eab36f015b8d993a00d85e4cc,
@@ -1681,21 +1676,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 5022673070846127811, guid: 92ef3b9eab36f015b8d993a00d85e4cc,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5687825679732203408, guid: 92ef3b9eab36f015b8d993a00d85e4cc,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7503984061476829064, guid: 92ef3b9eab36f015b8d993a00d85e4cc,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 7503984061476829064, guid: 92ef3b9eab36f015b8d993a00d85e4cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1750,51 +1730,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerHolder
-      objectReference: {fileID: 0}
-    - target: {fileID: 7503984061476829065, guid: 92ef3b9eab36f015b8d993a00d85e4cc,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7503984061794625312, guid: 92ef3b9eab36f015b8d993a00d85e4cc,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7503984061817182416, guid: 92ef3b9eab36f015b8d993a00d85e4cc,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7503984061959244854, guid: 92ef3b9eab36f015b8d993a00d85e4cc,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7503984062597832103, guid: 92ef3b9eab36f015b8d993a00d85e4cc,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7503984062970145286, guid: 92ef3b9eab36f015b8d993a00d85e4cc,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7503984063176428148, guid: 92ef3b9eab36f015b8d993a00d85e4cc,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7503984063225775918, guid: 92ef3b9eab36f015b8d993a00d85e4cc,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7503984063405141831, guid: 92ef3b9eab36f015b8d993a00d85e4cc,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7503984061476829065, guid: 92ef3b9eab36f015b8d993a00d85e4cc,
         type: 3}

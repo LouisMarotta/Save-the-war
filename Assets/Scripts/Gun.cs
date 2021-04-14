@@ -53,7 +53,8 @@ public class Gun : MonoBehaviour
     IEnumerator Shoot()
     {
         RaycastHit2D hitInfo;
-        hitInfo = Physics2D.Raycast(firePoint.position, firePoint.right);
+        //IGNORA IL PLAYER
+        hitInfo = Physics2D.Raycast(firePoint.position, firePoint.right, 50, ~LayerMask.GetMask("Player"));
 
 
         if (hitInfo)
@@ -110,12 +111,12 @@ public class Gun : MonoBehaviour
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         difference.Normalize();
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        Debug.Log(transform.rotation = Quaternion.Euler(0f, 0f, rotationZ));
+        //Debug.Log(transform.rotation = Quaternion.Euler(0f, 0f, rotationZ));
         transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
 
         if (rotationZ > -89 && rotationZ < 89)
         {
-            Debug.Log("Facing right");
+            //Debug.Log("Facing right");
             spriteRenderer.flipY = false;
 
             //if (gunHolder.transform.eulerAngles.y == 0)
@@ -138,7 +139,7 @@ public class Gun : MonoBehaviour
         }
         else
         {
-            Debug.Log("Facing left");
+            //Debug.Log("Facing left");
             spriteRenderer.flipY = true;
         }
 
