@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4137916731584777442}
   - component: {fileID: 4202990741339147100}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 371787765825546632}
   - component: {fileID: 4110747071285944300}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7503984061476829064}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlayerHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7503984061794625315}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CeilingCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 7503984061817182413}
   - component: {fileID: 7503984061817182418}
   - component: {fileID: 7503984061817182419}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: RopeHingeAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 7503984061959244849}
   - component: {fileID: 7503984061959244851}
   - component: {fileID: 7503984061959244848}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GunPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 7503984062597832099}
   - component: {fileID: 7503984062597832096}
   - component: {fileID: 8650726809762948725}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +626,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7503984062970145281}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -665,6 +665,7 @@ GameObject:
   - component: {fileID: 7503984063176428142}
   - component: {fileID: 7503984063176428143}
   - component: {fileID: 7503984063176428141}
+  - component: {fileID: 2076694638}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -800,6 +801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 7503984063176428146}
+  animator: {fileID: 2076694638}
   runSpeed: 40
   isSwinging: 0
   ropeHook: {x: 0, y: 0}
@@ -847,7 +849,7 @@ MonoBehaviour:
   maxHealth: 5
   currentHealth: 0
   healthBar: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 7503984063176428145}
 --- !u!232 &7503984063176428142
 DistanceJoint2D:
   m_ObjectHideFlags: 0
@@ -986,6 +988,25 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!95 &2076694638
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7503984063176428148}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fc121ef11b425d944a38a9470d6c101c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7503984063225775918
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,7 +1016,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7503984063225775913}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PositionChecks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1028,7 +1049,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7503984063405141825}
   - component: {fileID: 7503984063405141830}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
