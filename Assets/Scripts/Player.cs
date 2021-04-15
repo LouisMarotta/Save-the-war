@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameMaster>();
         transform.position = gm.lastCheckPointPos;
-        
+
     }
 
     void Update()
