@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
         currentHealth -= damage;
         if (IsDead())
         {
-            //Die();
+            Die();
         }
         healthBar.SetHealth(currentHealth);
     }
